@@ -1,0 +1,74 @@
+[
+  {
+    "id": "u001",
+    "nickname": "吕泽卿",
+    "avatar": "/images/avatar/lvzeqing.jpg",
+    "phone": "13800001111",
+    "email": "xiaoming@campus.com",
+    "password": "123456",
+    "school": "北京信息科技大学",
+    "campus": "沙河校区",
+    "grade": "2025级",
+    "major": "计算机科学与技术",
+    "studentNo": "20230101001",
+    "contact": "13800001111",
+    "certified": true,
+    "isAdmin": false,
+    "privacySettings": {
+      "showContact": true,
+      "allowViewPosts": true,
+      "systemNotice": true,
+      "tradeNotice": true,
+      "allowVerify": true
+    },
+    "createdAt": "2026-06-01 10:00:00"
+  },
+  {
+    "id": "u002",
+    "nickname": "小红学姐",
+    "avatar": "/images/default-avatar.png",
+    "phone": "13800002222",
+    "email": "xiaohong@campus.com",
+    "password": "123456",
+    "school": "北京信息科技大学",
+    "campus": "沙河校区",
+    "grade": "2022级",
+    "major": "信息管理与信息系统",
+    "studentNo": "20220101002",
+    "contact": "13800002222",
+    "certified": true,
+    "isAdmin": false,
+    "privacySettings": {
+      "showContact": true,
+      "allowViewPosts": true,
+      "systemNotice": true,
+      "tradeNotice": true,
+      "allowVerify": true
+    },
+    "createdAt": "2026-06-02 10:00:00"
+  },
+  {
+    "id": "u003",
+    "nickname": "校园管理员",
+    "avatar": "/images/default-avatar.png",
+    "phone": "13800000000",
+    "email": "admin@campus.com",
+    "password": "admin123",
+    "school": "北京信息科技大学",
+    "campus": "沙河校区",
+    "grade": "",
+    "major": "",
+    "studentNo": "",
+    "contact": "13800000000",
+    "certified": true,
+    "isAdmin": true,
+    "privacySettings": {
+      "showContact": true,
+      "allowViewPosts": true,
+      "systemNotice": true,
+      "tradeNotice": true,
+      "allowVerify": true
+    },
+    "createdAt": "2026-06-01 00:00:00"
+  }
+]

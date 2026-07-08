@@ -1,0 +1,32 @@
+[
+  {
+    "id": "rpt001",
+    "productId": "p009",
+    "productTitle": "已下架测试商品（仅测试用）",
+    "reportedUserId": "u001",
+    "reportedUserName": "小明同学",
+    "reporterId": "u002",
+    "reporterName": "小红学姐",
+    "reason": "虚假信息",
+    "description": "这个商品信息不实，实际物品不存在",
+    "status": "待处理",
+    "adminResult": "",
+    "createdAt": "2026-06-19 10:00:00",
+    "handledAt": ""
+  },
+  {
+    "id": "rpt002",
+    "productId": "p003",
+    "productTitle": "人体工学椅 99新 搬家急出",
+    "reportedUserId": "u001",
+    "reportedUserName": "小明同学",
+    "reporterId": "u002",
+    "reporterName": "小红学姐",
+    "reason": "价格异常",
+    "description": "价格比市场价低太多，怀疑有问题",
+    "status": "已驳回",
+    "adminResult": "经核实，商品信息真实，价格合理，驳回举报",
+    "createdAt": "2026-06-20 16:00:00",
+    "handledAt": "2026-06-21 09:00:00"
+  }
+]

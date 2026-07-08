@@ -1,0 +1,20 @@
+[
+  {
+    "id": "fav001",
+    "userId": "u001",
+    "productId": "p002",
+    "createdAt": "2026-06-20 10:00:00"
+  },
+  {
+    "id": "fav002",
+    "userId": "u002",
+    "productId": "p001",
+    "createdAt": "2026-06-21 14:00:00"
+  },
+  {
+    "id": "fav003",
+    "userId": "u001",
+    "productId": "p006",
+    "createdAt": "2026-06-22 09:00:00"
+  }
+]
