@@ -1,0 +1,75 @@
+<view class="page">
+  <!-- 日期 -->
+  <view class="card">
+    <view class="card-title">查询日期</view>
+    <picker mode="date" value="{{selectedDate}}" bindchange="onDateChange">
+      <view class="picker-box">{{selectedDate}}</view>
+    </picker>
+  </view>
+
+  <!-- 校区 -->
+  <view class="card">
+    <view class="card-title">选择校区</view>
+    <view class="tag-row">
+      <view class="tag {{selectedCampus === item.id ? 'active' : ''}}"
+        wx:for="{{campuses}}" wx:key="id"
+        bindtap="onCampusChange" data-id="{{item.id}}">{{item.name}}</view>
+    </view>
+  </view>
+
+  <!-- 教学楼 -->
+  <view class="card">
+    <view class="card-title">选择教学楼</view>
+    <view class="tag-row wrap">
+      <view class="tag {{selectedBuilding === item.id ? 'active' : ''}}"
+        wx:for="{{buildings}}" wx:key="id"
+        bindtap="onBuildingChange" data-id="{{item.id}}">{{item.name}}</view>
+    </view>
+  </view>
+
+  <!-- 节次 -->
+  <view class="card">
+    <view class="card-title">选择节次</view>
+    <view class="tag-col">
+      <view class="tag {{selectedPeriod === item.id ? 'active' : ''}}"
+        wx:for="{{periods}}" wx:key="id"
+        bindtap="onPeriodChange" data-id="{{item.id}}">{{item.label}}</view>
+    </view>
+  </view>
+
+  <!-- 查询按钮 -->
+  <view class="card">
+    <button class="btn-primary" bindtap="onQuery">🔍 查询空教室</button>
+  </view>
+
+  <!-- 查询结果 -->
+  <view class="card" wx:if="{{hasQueried}}">
+    <view class="card-title">查询结果（{{rooms.length}}间可用）</view>
+    <view wx:if="{{rooms.length === 0}}" class="empty-text">该时段没有空教室</view>
+    <view class="room-card" wx:for="{{rooms}}" wx:key="id" bindtap="onRoomTap" data-id="{{item.id}}">
+      <view class="room-left">
+        <view class="room-name">{{item.name}}</view>
+        <view class="room-type">{{item.type}}</view>
+      </view>
+      <view class="room-right">
+        <text class="room-cap">容量 {{item.capacity}}人</text>
+        <text class="room-arrow">›</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 教室详情弹窗 -->
+  <view class="modal-mask" wx:if="{{showRoomDetail}}" bindtap="onCloseDetail"></view>
+  <view class="modal-card" wx:if="{{showRoomDetail}}">
+    <view class="modal-title">{{currentRoom.name}} 详情</view>
+    <view class="detail-row"><text class="d-label">教室类型</text><text class="d-value">{{currentRoom.type}}</text></view>
+    <view class="detail-row"><text class="d-label">容量</text><text class="d-value">{{currentRoom.capacity}}人</text></view>
+    <view class="detail-row"><text class="d-label">设备</text><text class="d-value">{{currentRoom.equipment}}</text></view>
+    <view class="detail-row"><text class="d-label">位置</text><text class="d-value">{{currentRoom.name}}</text></view>
+    <button class="btn-primary" style="margin-top:20rpx" bindtap="onAddPlan">加入自习计划</button>
+    <view class="modal-close" bindtap="onCloseDetail">关闭</view>
+  </view>
+
+  <view class="service-note">当前为课程展示模拟数据</view>
+  <view class="safe-bottom"></view>
+</view>

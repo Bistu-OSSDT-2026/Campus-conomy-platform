@@ -1,0 +1,64 @@
+<view class="page">
+  <!-- 未提交 → 表单 -->
+  <block wx:if="{{!submitted}}">
+    <!-- 报修类型 -->
+    <view class="card">
+      <view class="card-title">🔧 报修类型</view>
+      <view class="type-grid">
+        <view class="type-item {{selectedType === item.id ? 'active' : ''}}"
+          wx:for="{{types}}" wx:key="id"
+          bindtap="onTypeTap" data-id="{{item.id}}">
+          <text class="type-icon">{{item.icon}}</text>
+          <text class="type-name">{{item.name}}</text>
+        </view>
+      </view>
+    </view>
+
+    <!-- 宿舍信息 -->
+    <view class="card">
+      <view class="card-title">📍 宿舍信息</view>
+      <input class="form-input" placeholder="宿舍楼号（如：学二公寓）" value="{{building}}" bindinput="onInput" data-field="building" />
+      <input class="form-input" placeholder="宿舍号（如：A501）" value="{{room}}" bindinput="onInput" data-field="room" />
+    </view>
+
+    <!-- 问题描述 -->
+    <view class="card">
+      <view class="card-title">📝 问题描述</view>
+      <textarea class="form-textarea" placeholder="请详细描述问题情况..." value="{{description}}" bindinput="onInput" data-field="description" />
+    </view>
+
+    <!-- 上传图片 -->
+    <view class="card">
+      <view class="card-title">📷 上传照片（选填，最多3张）</view>
+      <view class="img-list">
+        <view class="img-item" wx:for="{{images}}" wx:key="*this">
+          <image class="img-thumb" src="{{item}}" mode="aspectFill" />
+          <view class="img-remove" bindtap="onRemoveImage" data-idx="{{index}}">✕</view>
+        </view>
+        <view class="img-add" wx:if="{{images.length < 3}}" bindtap="onChooseImage">+</view>
+      </view>
+    </view>
+
+    <view class="card">
+      <button class="btn-primary" bindtap="onSubmit">提交报修</button>
+    </view>
+  </block>
+
+  <!-- 已提交 → 报修单 -->
+  <block wx:else>
+    <view class="result-card">
+      <view class="result-icon">✅</view>
+      <view class="result-title">报修提交成功（模拟）</view>
+      <view class="result-sub">维修人员将尽快处理</view>
+      <view class="repair-info">
+        <view class="ri-row"><text class="ri-label">报修编号</text><text class="ri-value">{{repairId}}</text></view>
+        <view class="ri-row"><text class="ri-label">报修类型</text><text class="ri-value">{{selectedTypeName}}</text></view>
+        <view class="ri-row"><text class="ri-label">宿舍</text><text class="ri-value">{{building}} {{room}}</text></view>
+        <view class="ri-row"><text class="ri-label">状态</text><text class="ri-value" style="color:#FF922B">待处理</text></view>
+      </view>
+    </view>
+  </block>
+
+  <view class="service-note">当前为课程展示模拟数据</view>
+  <view class="safe-bottom"></view>
+</view>

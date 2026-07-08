@@ -1,0 +1,54 @@
+<view class="page">
+  <!-- 未提交 → 表单 -->
+  <block wx:if="{{!orderSubmitted}}">
+    <!-- 快递点选择 -->
+    <view class="card">
+      <view class="card-title">📦 选择快递点</view>
+      <view class="tag-row wrap">
+        <view class="tag {{selectedStation === item.id ? 'active' : ''}}"
+          wx:for="{{stations}}" wx:key="id"
+          bindtap="onStationTap" data-id="{{item.id}}">{{item.name}}</view>
+      </view>
+    </view>
+
+    <!-- 取件信息 -->
+    <view class="card">
+      <view class="card-title">取件信息</view>
+      <input class="form-input" placeholder="请输入取件码" value="{{pickupCode}}" bindinput="onInput" data-field="pickupCode" />
+      <input class="form-input" placeholder="送达地点（如：学二公寓A门）" value="{{deliveryAddr}}" bindinput="onInput" data-field="deliveryAddr" />
+      <input class="form-input" placeholder="联系电话（选填）" value="{{phone}}" bindinput="onInput" data-field="phone" type="number" />
+      <textarea class="form-textarea" placeholder="备注（选填）：快递大小、特殊要求等" value="{{remark}}" bindinput="onInput" data-field="remark" />
+    </view>
+
+    <!-- 费用 -->
+    <view class="card">
+      <view class="card-title">费用说明</view>
+      <view class="price-info">
+        <text class="price-desc">基础代取费</text>
+        <text class="price-num">¥{{basePrice}} 起</text>
+      </view>
+    </view>
+
+    <view class="card">
+      <button class="btn-primary" bindtap="onSubmit">提交下单</button>
+    </view>
+  </block>
+
+  <!-- 已提交 → 订单状态 -->
+  <block wx:else>
+    <view class="result-card">
+      <view class="result-icon">✅</view>
+      <view class="result-title">代取订单已发布</view>
+      <view class="result-sub">等待同学接单中</view>
+      <view class="order-info">
+        <view class="oi-row"><text class="oi-label">订单编号</text><text class="oi-value">{{orderId}}</text></view>
+        <view class="oi-row"><text class="oi-label">取件码</text><text class="oi-value">{{pickupCode}}</text></view>
+        <view class="oi-row"><text class="oi-label">送达地点</text><text class="oi-value">{{deliveryAddr}}</text></view>
+        <view class="oi-row"><text class="oi-label">状态</text><text class="oi-value" style="color:#FF922B">待接单</text></view>
+      </view>
+    </view>
+  </block>
+
+  <view class="service-note">当前为课程展示模拟数据</view>
+  <view class="safe-bottom"></view>
+</view>

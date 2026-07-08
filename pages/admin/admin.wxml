@@ -1,0 +1,83 @@
+<view class="admin-page">
+  <!-- 无权限 -->
+  <view class="no-permission" wx:if="{{!isAdmin}}">
+    <view class="np-icon">🔒</view>
+    <view class="np-title">无访问权限</view>
+    <view class="np-desc">仅管理员可访问后台</view>
+    <button class="btn-primary btn-sm" style="margin-top:30rpx" bindtap="onGoBack">返回</button>
+  </view>
+
+  <!-- 管理后台 -->
+  <block wx:else>
+    <!-- 数据概览 -->
+    <view class="overview-section">
+      <view class="section-title">📊 数据概览</view>
+      <view class="overview-grid">
+        <view class="overview-card">
+          <text class="ov-num">{{totalGoods}}</text>
+          <text class="ov-label">商品总数</text>
+        </view>
+        <view class="overview-card">
+          <text class="ov-num warning">{{pendingReports}}</text>
+          <text class="ov-label">待处理举报</text>
+        </view>
+        <view class="overview-card">
+          <text class="ov-num success">{{totalUsers}}</text>
+          <text class="ov-label">注册用户</text>
+        </view>
+        <view class="overview-card">
+          <text class="ov-num">{{totalViews}}</text>
+          <text class="ov-label">总浏览量</text>
+        </view>
+      </view>
+    </view>
+
+    <!-- Tab 切换 -->
+    <view class="admin-tabs">
+      <view class="tab {{activeTab === 'goods' ? 'active' : ''}}" bindtap="switchTab" data-tab="goods">商品管理</view>
+      <view class="tab {{activeTab === 'reports' ? 'active' : ''}}" bindtap="switchTab" data-tab="reports">举报处理</view>
+    </view>
+
+    <!-- 商品管理 -->
+    <view class="tab-content" wx:if="{{activeTab === 'goods'}}">
+      <view class="goods-item" wx:for="{{allGoods}}" wx:key="id">
+        <image class="gi-img" src="{{item.images[0]}}" mode="aspectFill" />
+        <view class="gi-info">
+          <view class="gi-title">{{item.title}}</view>
+          <view class="gi-seller">{{item.seller.name}} · {{item.publishTime}}</view>
+        </view>
+        <view class="gi-actions">
+          <view class="gi-status {{item.status === 'published' ? 'online' : 'offline'}}">
+            {{item.status === 'published' ? '在售' : '已下架'}}
+          </view>
+          <view class="gi-btn danger" wx:if="{{item.status === 'published'}}" catchtap="onOfflineGoods" data-id="{{item.id}}">下架</view>
+          <view class="gi-btn" wx:else catchtap="onOnlineGoods" data-id="{{item.id}}">上架</view>
+        </view>
+      </view>
+    </view>
+
+    <!-- 举报处理 -->
+    <view class="tab-content" wx:if="{{activeTab === 'reports'}}">
+      <view class="report-item" wx:for="{{reports}}" wx:key="id">
+        <view class="ri-header">
+          <text class="ri-reason">📌 {{item.reason}}</text>
+          <text class="ri-status pending">待处理</text>
+        </view>
+        <view class="ri-info">
+          <text>举报商品ID: {{item.goodsId}}</text>
+          <text>举报时间: {{item.time}}</text>
+        </view>
+        <view class="ri-actions">
+          <view class="ri-btn danger" catchtap="onHandleReport" data-id="{{item.id}}" data-action="remove">下架商品</view>
+          <view class="ri-btn" catchtap="onHandleReport" data-id="{{item.id}}" data-action="dismiss">驳回举报</view>
+          <view class="ri-btn danger" catchtap="onHandleReport" data-id="{{item.id}}" data-action="ban">封禁用户</view>
+        </view>
+      </view>
+
+      <view class="empty-state" wx:if="{{reports.length === 0}}">
+        <text class="empty-icon">✅</text>
+        <text class="empty-text">暂无待处理举报</text>
+      </view>
+    </view>
+  </block>
+</view>

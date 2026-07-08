@@ -1,0 +1,124 @@
+<view class="opensource-page">
+  <!-- 头部 -->
+  <view class="os-header">
+    <view class="os-logo">📖</view>
+    <view class="os-title">CampusMarket 开源说明</view>
+    <view class="os-version">v1.0.0 · AGPL-3.0</view>
+  </view>
+
+  <!-- 为什么开源 -->
+  <view class="os-section">
+    <view class="os-section-title">💡 为什么开源？</view>
+    <view class="os-text">
+      校园经济是面向高校的校园交易平台。我们将它开源，希望：
+    </view>
+    <view class="os-list">
+      <view class="os-item">• 任何学校都可以免费部署自己的校园交易平台</view>
+      <view class="os-item">• 学生开发者可以参考学习完整的小程序开发流程</view>
+      <view class="os-item">• 社区共同维护，不断完善功能和安全</view>
+      <view class="os-item">• 防止平台被单一商业公司垄断</view>
+    </view>
+  </view>
+
+  <!-- 许可证 -->
+  <view class="os-section">
+    <view class="os-section-title">📜 开源协议：AGPL-3.0</view>
+    <view class="os-text">
+      AGPL-3.0（GNU Affero General Public License v3.0）是最严格的 copyleft 许可证之一。
+    </view>
+    <view class="os-card warn">
+      <view class="os-card-title">⚠️ 核心要求</view>
+      <view class="os-card-text">如果你修改了本项目的代码并通过网络提供服务，你必须公开你的修改后的完整源代码。</view>
+    </view>
+    <view class="os-card">
+      <view class="os-card-title">✅ 你可以</view>
+      <view class="os-item">• 自由下载、使用、修改代码</view>
+      <view class="os-item">• 在自己的学校部署使用</view>
+      <view class="os-item">• 用于商业目的（需遵守协议）</view>
+      <view class="os-item">• 分发修改后的版本</view>
+    </view>
+    <view class="os-card warn">
+      <view class="os-card-title">❌ 你不可以</view>
+      <view class="os-item">• 闭源使用修改后的版本</view>
+      <view class="os-item">• 将修改后的代码作为闭源 SaaS 提供</view>
+      <view class="os-item">• 删除原作者版权声明</view>
+      <view class="os-item">• 转授权给他人闭源使用</view>
+    </view>
+  </view>
+
+  <!-- 商业授权 -->
+  <view class="os-section">
+    <view class="os-section-title">💰 商业授权</view>
+    <view class="os-text">
+      如果你希望闭源使用或深度定制，我们提供商业授权：
+    </view>
+    <view class="os-price-table">
+      <view class="price-row">
+        <text class="price-label">部署服务</text>
+        <text class="price-value">¥500-2000/次</text>
+      </view>
+      <view class="price-row">
+        <text class="price-label">功能定制</text>
+        <text class="price-value">¥3000 起</text>
+      </view>
+      <view class="price-row">
+        <text class="price-label">年度维护</text>
+        <text class="price-value">¥1000-3000/年</text>
+      </view>
+      <view class="price-row">
+        <text class="price-label">商业授权</text>
+        <text class="price-value">¥5000 起/年</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 贡献指南 -->
+  <view class="os-section">
+    <view class="os-section-title">🤝 贡献指南</view>
+    <view class="os-text">欢迎提交 Issue 和 Pull Request！</view>
+    <view class="os-steps">
+      <view class="step">
+        <view class="step-num">1</view>
+        <view class="step-text">Fork 本仓库</view>
+      </view>
+      <view class="step">
+        <view class="step-num">2</view>
+        <view class="step-text">创建特性分支</view>
+      </view>
+      <view class="step">
+        <view class="step-num">3</view>
+        <view class="step-text">提交代码修改</view>
+      </view>
+      <view class="step">
+        <view class="step-num">4</view>
+        <view class="step-text">发起 Pull Request</view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 仓库信息 -->
+  <view class="os-section">
+    <view class="os-section-title">🔗 仓库信息</view>
+    <view class="os-repo-info">
+      <view class="repo-item">
+        <text class="repo-label">GitHub</text>
+        <text class="repo-value">github.com/your-org/campus-market</text>
+      </view>
+      <view class="repo-item">
+        <text class="repo-label">协议</text>
+        <text class="repo-value">AGPL-3.0</text>
+      </view>
+      <view class="repo-item">
+        <text class="repo-label">技术栈</text>
+        <text class="repo-value">微信小程序 / Node.js / MySQL</text>
+      </view>
+    </view>
+  </view>
+
+  <view class="os-footer">
+    <text>Made with ❤️ by CampusMarket Team</text>
+    <text>© 2026 CampusMarket Contributors</text>
+  </view>
+
+  <view class="safe-bottom"></view>
+</view>

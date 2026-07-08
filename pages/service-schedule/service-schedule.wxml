@@ -1,0 +1,51 @@
+<view class="page">
+  <!-- 周次 -->
+  <view class="card">
+    <view class="card-title">第 {{currentWeek}} 周</view>
+    <slider min="1" max="{{maxWeek}}" value="{{currentWeek - 1}}" bindchange="onWeekChange" activeColor="#2F6BFF" block-size="20" />
+    <view class="week-range">共{{maxWeek}}周</view>
+  </view>
+
+  <!-- 星期切换 -->
+  <view class="weekday-bar">
+    <view class="weekday-item {{selectedDay === idx ? 'active' : ''}}"
+      wx:for="{{weekdays}}" wx:key="*this" wx:for-index="idx"
+      bindtap="onDayTap" data-idx="{{idx}}">{{item}}</view>
+  </view>
+
+  <!-- 今日课程 -->
+  <view class="card">
+    <view class="card-title">📖 {{weekdays[selectedDay]}}课程</view>
+    <view wx:if="{{todayCourses.length === 0}}" class="empty-msg">
+      <text class="empty-icon">☀️</text>
+      <text class="empty-text">今天没有课程，适合自习或参加活动</text>
+    </view>
+    <view class="course-card" wx:for="{{todayCourses}}" wx:key="id"
+      style="border-left: 6rpx solid {{item.color}}"
+      bindtap="onCourseTap" data-id="{{item.id}}">
+      <view class="course-top">
+        <text class="course-name">{{item.name}}</text>
+        <text class="course-time">{{item.time}}</text>
+      </view>
+      <view class="course-info">
+        <text>👨‍🏫 {{item.teacher}}</text>
+        <text>📍 {{item.room}}</text>
+        <text>📅 {{item.weeks}}</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 课程详情弹窗 -->
+  <view class="modal-mask" wx:if="{{showDetail}}" bindtap="onCloseDetail"></view>
+  <view class="modal-card" wx:if="{{showDetail}}">
+    <view class="modal-title">{{detailCourse.name}}</view>
+    <view class="d-row"><text class="d-label">授课教师</text><text class="d-value">{{detailCourse.teacher}}</text></view>
+    <view class="d-row"><text class="d-label">上课时间</text><text class="d-value">{{weekdays[detailCourse.weekday - 1]}} {{detailCourse.time}}</text></view>
+    <view class="d-row"><text class="d-label">上课教室</text><text class="d-value">{{detailCourse.room}}</text></view>
+    <view class="d-row"><text class="d-label">教学周次</text><text class="d-value">{{detailCourse.weeks}}</text></view>
+    <view class="modal-close" bindtap="onCloseDetail">关闭</view>
+  </view>
+
+  <view class="service-note">当前为课程展示模拟数据</view>
+  <view class="safe-bottom"></view>
+</view>

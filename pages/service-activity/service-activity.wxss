@@ -1,0 +1,27 @@
+.page{background:#F5F7FB;min-height:100vh;padding:20rpx 24rpx}
+.cat-scroll{white-space:nowrap;margin-bottom:20rpx;padding:4rpx 0}
+.cat-tag{display:inline-block;padding:14rpx 28rpx;border-radius:12rpx;font-size:26rpx;color:#666;background:#FFF;margin-right:16rpx}
+.cat-tag.active{background:#2F6BFF;color:#FFF}
+.card{background:#FFF;border-radius:24rpx;padding:24rpx;margin-bottom:16rpx}
+.act-top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:12rpx}
+.act-name{font-size:28rpx;font-weight:600;color:#1A1A2E;flex:1;line-height:1.4}
+.act-cat{font-size:22rpx;color:#2F6BFF;background:#F0F5FF;padding:4rpx 14rpx;border-radius:12rpx;margin-left:12rpx;flex-shrink:0}
+.act-info{display:flex;flex-wrap:wrap;gap:16rpx;font-size:24rpx;color:#888;margin-bottom:12rpx}
+.act-desc{font-size:24rpx;color:#999;line-height:1.5;margin-bottom:16rpx}
+.act-bottom{display:flex;justify-content:space-between;align-items:center}
+.act-deadline{font-size:22rpx;color:#FF4D4F}
+.enroll-btn{padding:10rpx 28rpx;border-radius:12rpx;font-size:24rpx;background:#2F6BFF;color:#FFF}
+.enroll-btn.done{background:#EEE;color:#999}
+.enroll-btn.big{padding:18rpx 0;font-size:28rpx;text-align:center;border-radius:16rpx}
+.empty-msg{text-align:center;padding:80rpx 0}
+.empty-text{font-size:26rpx;color:#999}
+.modal-mask{position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.4);z-index:200}
+.modal-card{position:fixed;bottom:0;left:0;right:0;background:#FFF;border-radius:32rpx 32rpx 0 0;padding:40rpx 32rpx;z-index:201;animation:slideUp 0.3s}
+@keyframes slideUp{from{transform:translateY(100%)}to{transform:translateY(0)}}
+.modal-title{font-size:32rpx;font-weight:700;color:#1A1A2E;margin-bottom:24rpx;text-align:center}
+.d-row{display:flex;justify-content:space-between;padding:16rpx 0;border-bottom:1rpx solid #F0F0F0}
+.d-label{font-size:26rpx;color:#999}
+.d-value{font-size:26rpx;color:#333;font-weight:500;flex:1;text-align:right}
+.modal-close{text-align:center;font-size:26rpx;color:#999;margin-top:16rpx}
+.service-note{font-size:22rpx;color:#BBB;text-align:center;margin-top:10rpx}
+.safe-bottom{height:40rpx}

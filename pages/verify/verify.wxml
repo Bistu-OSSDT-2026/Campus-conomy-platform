@@ -1,0 +1,119 @@
+<view class="verify-page">
+  <!-- 顶部提示 -->
+  <view class="verify-header">
+    <view class="header-icon">🛡️</view>
+    <view class="header-title">校园身份认证</view>
+    <view class="header-desc">完成认证后即可发布商品和联系卖家</view>
+  </view>
+
+  <!-- 认证表单 -->
+  <view class="verify-form">
+    <!-- 昵称 -->
+    <view class="form-item">
+      <view class="form-label">昵称 <text class="required">*</text></view>
+      <input class="form-input" placeholder="请输入你的昵称" value="{{form.nickname}}" bindinput="onInput" data-field="nickname" />
+    </view>
+
+    <!-- 学校（搜索检索选择框） -->
+    <view class="form-item">
+      <view class="form-label">学校 <text class="required">*</text></view>
+      <view class="form-picker {{form.school ? '' : 'placeholder'}}" bindtap="onOpenSchoolPicker">
+        {{form.school || '请选择或搜索学校'}}
+        <text class="picker-arrow">›</text>
+      </view>
+    </view>
+
+    <!-- 学校选择弹窗 -->
+    <view class="school-picker-mask" wx:if="{{showSchoolPicker}}" catchtap="onCloseSchoolPicker"></view>
+    <view class="school-picker-popup" wx:if="{{showSchoolPicker}}">
+      <view class="sp-header">
+        <text class="sp-title">选择学校</text>
+        <text class="sp-close" bindtap="onCloseSchoolPicker">✕</text>
+      </view>
+      <view class="sp-search-box">
+        <text class="sp-search-icon">🔍</text>
+        <input class="sp-search-input" placeholder="输入关键词搜索学校" value="{{schoolSearchKey}}" bindinput="onSchoolSearch" focus="{{showSchoolPicker}}" />
+        <text class="sp-clear" wx:if="{{schoolSearchKey}}" bindtap="onClearSchoolSearch">✕</text>
+      </view>
+      <scroll-view class="sp-list" scroll-y enhanced show-scrollbar="{{false}}">
+        <block wx:if="{{filteredSchoolList.length > 0}}">
+          <view class="sp-type-label" wx:if="{{showTypeLabel}}">{{schoolTypeLabel}}</view>
+          <view
+            class="sp-item {{form.school === item.name ? 'selected' : ''}}"
+            wx:for="{{filteredSchoolList}}"
+            wx:key="name"
+            bindtap="onSelectSchool"
+            data-name="{{item.name}}"
+          >
+            <text class="sp-item-name">{{item.name}}</text>
+            <text class="sp-item-type">{{item.type}}</text>
+            <text class="sp-check" wx:if="{{form.school === item.name}}">✓</text>
+          </view>
+        </block>
+        <view class="sp-empty" wx:if="{{filteredSchoolList.length === 0}}">
+          <text class="sp-empty-icon">😕</text>
+          <text class="sp-empty-text">未找到相关院校</text>
+        </view>
+      </scroll-view>
+    </view>
+
+    <!-- 校区 -->
+    <view class="form-item">
+      <view class="form-label">校区 <text class="required">*</text></view>
+      <picker mode="selector" range="{{campusList}}" bindchange="onCampusChange">
+        <view class="form-picker {{form.campus ? '' : 'placeholder'}}">
+          {{form.campus || '请选择校区'}}
+          <text class="picker-arrow">›</text>
+        </view>
+      </picker>
+    </view>
+
+    <!-- 年级 -->
+    <view class="form-item">
+      <view class="form-label">年级 <text class="required">*</text></view>
+      <picker mode="selector" range="{{gradeList}}" bindchange="onGradeChange">
+        <view class="form-picker {{form.grade ? '' : 'placeholder'}}">
+          {{form.grade || '请选择年级'}}
+          <text class="picker-arrow">›</text>
+        </view>
+      </picker>
+    </view>
+
+    <!-- 专业 -->
+    <view class="form-item">
+      <view class="form-label">专业 <text class="required">*</text></view>
+      <input class="form-input" placeholder="请输入专业全称" value="{{form.major}}" bindinput="onInput" data-field="major" />
+    </view>
+
+    <!-- 学号 -->
+    <view class="form-item">
+      <view class="form-label">学号 <text class="required">*</text></view>
+      <input class="form-input" type="text" placeholder="请输入学号" value="{{form.studentId}}" bindinput="onInput" data-field="studentId" />
+    </view>
+
+    <!-- 联系方式 -->
+    <view class="form-item">
+      <view class="form-label">联系方式 <text class="required">*</text></view>
+      <input class="form-input" type="text" placeholder="QQ/微信/手机号（用于交易联系）" value="{{form.contact}}" bindinput="onInput" data-field="contact" />
+    </view>
+
+    <!-- 提交按钮 -->
+    <button class="submit-btn" bindtap="onSubmit" loading="{{loading}}" disabled="{{loading}}">
+      提交认证
+    </button>
+
+    <!-- 跳过 -->
+    <view class="skip-btn" bindtap="onSkip">
+      暂不认证，先去逛逛
+    </view>
+  </view>
+
+  <!-- 认证说明 -->
+  <view class="verify-tips">
+    <view class="tip-title">💡 认证说明</view>
+    <view class="tip-item">• 认证信息仅用于身份核实，不会公开显示</view>
+    <view class="tip-item">• 认证后可发布商品、收藏、联系卖家</view>
+    <view class="tip-item">• 未认证用户仅可浏览商品</view>
+    <view class="tip-item">• 本平台为开源项目，数据由各校自行管理</view>
+  </view>
+</view>

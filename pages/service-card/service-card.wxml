@@ -1,0 +1,77 @@
+<view class="page">
+  <!-- 卡片余额概览 -->
+  <view class="balance-card">
+    <view class="balance-label">校园卡余额</view>
+    <view class="balance-amount">¥{{balance}}</view>
+    <view class="balance-info">
+      <text>今日消费 ¥{{todaySpent}}</text>
+      <text>本月消费 ¥{{monthSpent}}</text>
+    </view>
+  </view>
+
+  <!-- 功能入口 -->
+  <view class="menu-grid">
+    <view class="menu-item" bindtap="onShowBalance">
+      <view class="menu-icon-wrap blue"><text>💰</text></view>
+      <text class="menu-label">余额查询</text>
+    </view>
+    <view class="menu-item" bindtap="onShowRecharge">
+      <view class="menu-icon-wrap green"><text>💵</text></view>
+      <text class="menu-label">在线充值</text>
+    </view>
+    <view class="menu-item" bindtap="onShowLost">
+      <view class="menu-icon-wrap orange"><text>🔒</text></view>
+      <text class="menu-label">挂失服务</text>
+    </view>
+    <view class="menu-item" bindtap="onShowRecords">
+      <view class="menu-icon-wrap purple"><text>📋</text></view>
+      <text class="menu-label">消费记录</text>
+    </view>
+  </view>
+
+  <!-- 余额详情弹窗 -->
+  <view class="modal-mask" wx:if="{{showBalance}}" bindtap="onCloseBalance"></view>
+  <view class="modal-card" wx:if="{{showBalance}}">
+    <view class="modal-title">💰 余额详情</view>
+    <view class="bill-row"><text class="bill-label">当前余额</text><text class="bill-value">¥{{balance}}</text></view>
+    <view class="bill-row"><text class="bill-label">今日消费</text><text class="bill-value">¥{{todaySpent}}</text></view>
+    <view class="bill-row"><text class="bill-label">本月消费</text><text class="bill-value">¥{{monthSpent}}</text></view>
+    <view class="bill-row"><text class="bill-label">卡状态</text><text class="bill-value" style="color:#52C41A">正常</text></view>
+    <view class="modal-close" bindtap="onCloseBalance">关闭</view>
+  </view>
+
+  <!-- 充值弹窗 -->
+  <view class="modal-mask" wx:if="{{showRecharge}}" bindtap="onCloseRecharge"></view>
+  <view class="modal-card" wx:if="{{showRecharge}}">
+    <view class="modal-title">💵 在线充值</view>
+    <input class="recharge-input" value="{{rechargeAmount}}" type="digit" placeholder="请输入充值金额" bindinput="onInputAmount" />
+    <view class="quick-amounts">
+      <text class="amount-tag" bindtap="onQuickAmount" data-amount="10">10元</text>
+      <text class="amount-tag" bindtap="onQuickAmount" data-amount="20">20元</text>
+      <text class="amount-tag" bindtap="onQuickAmount" data-amount="50">50元</text>
+      <text class="amount-tag" bindtap="onQuickAmount" data-amount="100">100元</text>
+    </view>
+    <button class="btn-primary" bindtap="onConfirmRecharge">确认充值</button>
+    <view class="modal-close" bindtap="onCloseRecharge">取消</view>
+  </view>
+
+  <!-- 消费记录弹窗 -->
+  <view class="modal-mask" wx:if="{{showRecords}}" bindtap="onCloseRecords"></view>
+  <view class="modal-card records-modal" wx:if="{{showRecords}}">
+    <view class="modal-title">📋 消费记录</view>
+    <view class="record-item" wx:for="{{records}}" wx:key="id">
+      <view class="rec-left">
+        <view class="rec-name">{{item.name}}</view>
+        <view class="rec-time">{{item.time}}</view>
+      </view>
+      <view class="rec-right">
+        <text class="rec-type">{{item.type}}</text>
+        <text class="rec-amount">-¥{{item.amount}}</text>
+      </view>
+    </view>
+    <view class="modal-close" bindtap="onCloseRecords">关闭</view>
+  </view>
+
+  <view class="service-note">该功能需接入学校官方平台，当前为展示入口</view>
+  <view class="safe-bottom"></view>
+</view>

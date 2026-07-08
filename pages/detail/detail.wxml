@@ -1,0 +1,136 @@
+<view class="detail-page" wx:if="{{goods}}">
+  <!-- 图片轮播 -->
+  <swiper class="image-swiper" indicator-dots="{{goods.images.length > 1}}" indicator-color="rgba(255,255,255,0.5)" indicator-active-color="#2F6BFF" autoplay circular>
+    <swiper-item wx:for="{{goods.images}}" wx:key="*this">
+      <image class="swiper-image" src="{{item}}" mode="aspectFill" bindtap="onPreviewImage" data-index="{{index}}" />
+    </swiper-item>
+  </swiper>
+
+  <!-- 价格与标题 -->
+  <view class="info-header">
+    <view class="price-row">
+      <view class="price-main">
+        <text class="price-symbol">¥</text>
+        <text class="price-value">{{goods.price}}</text>
+      </view>
+      <text class="price-original" wx:if="{{goods.originalPrice}}">原价 ¥{{goods.originalPrice}}</text>
+    </view>
+    <view class="goods-title">{{goods.title}}</view>
+    <view class="goods-tags">
+      <text class="tag tag-primary">{{goods.categoryName}}</text>
+      <text class="tag tag-success">{{goods.condition}}</text>
+      <text class="tag tag-warning" wx:if="{{goods.type === 'free'}}">免费</text>
+    </view>
+  </view>
+
+  <!-- 卖家信息 -->
+  <view class="seller-card" bindtap="onContactSeller">
+    <image class="seller-avatar" src="{{goods.seller.avatar}}" mode="aspectFill" />
+    <view class="seller-info">
+      <view class="seller-name">
+        {{goods.seller.name}}
+        <text class="verified-badge" wx:if="{{goods.seller.verified}}">✓已认证</text>
+      </view>
+      <view class="seller-school">{{goods.seller.school}} · {{goods.seller.grade}}</view>
+    </view>
+    <view class="contact-btn">联系卖家</view>
+  </view>
+
+  <!-- 商品描述 -->
+  <view class="desc-section">
+    <view class="section-title">商品描述</view>
+    <view class="desc-content">{{goods.desc}}</view>
+  </view>
+
+  <!-- 交易信息 -->
+  <view class="info-section">
+    <view class="section-title">交易信息</view>
+    <view class="info-row">
+      <text class="info-label">交易地点</text>
+      <text class="info-value">{{goods.tradePlace || '校内面交'}}</text>
+    </view>
+    <view class="info-row">
+      <text class="info-label">发布时间</text>
+      <text class="info-value">{{goods.publishTime}}</text>
+    </view>
+    <view class="info-row">
+      <text class="info-label">浏览次数</text>
+      <text class="info-value">{{goods.viewCount}}</text>
+    </view>
+  </view>
+
+  <!-- 举报入口 -->
+  <view class="report-section">
+    <text class="report-link" bindtap="onShowReport">⚠️ 举报该商品</text>
+  </view>
+
+  <!-- 底部操作栏 -->
+  <view class="bottom-bar safe-bottom">
+    <view class="bar-left">
+      <view class="bar-btn {{isFavorited ? 'active' : ''}}" bindtap="onToggleFavorite">
+        <text class="bar-icon">{{isFavorited ? '❤️' : '🤍'}}</text>
+        <text class="bar-text">{{isFavorited ? '已收藏' : '收藏'}}</text>
+        <text class="bar-num">{{goods.favCount}}</text>
+      </view>
+      <view class="bar-btn" bindtap="onShare">
+        <text class="bar-icon">↗️</text>
+        <text class="bar-text">分享</text>
+      </view>
+    </view>
+    <view class="bar-right">
+      <button class="contact-main-btn" bindtap="onContactSeller">联系卖家</button>
+    </view>
+  </view>
+
+  <!-- 联系卖家弹窗 -->
+  <view class="modal-mask" wx:if="{{showContactModal}}" bindtap="onCloseModal"></view>
+  <view class="modal-content" wx:if="{{showContactModal}}">
+    <view class="modal-title">联系卖家</view>
+    <view class="modal-body">
+      <view class="contact-info">
+        <text class="contact-label">卖家：</text>
+        <text class="contact-value">{{goods.seller.name}}</text>
+      </view>
+      <view class="contact-info" wx:if="{{showSellerContact}}">
+        <text class="contact-label">联系方式：</text>
+        <text class="contact-value">{{goods.contact || sellerContactInfo || '未填写'}}</text>
+      </view>
+      <view class="contact-info" wx:else>
+        <text class="contact-label">联系方式：</text>
+        <text class="contact-value contact-hidden">该用户已隐藏联系方式</text>
+      </view>
+      <view class="contact-tip">💡 请选择校内公共场所交易，注意安全</view>
+    </view>
+    <view class="modal-btn" bindtap="onCloseModal">我知道了</view>
+  </view>
+
+  <!-- 举报弹窗 -->
+  <view class="modal-mask" wx:if="{{showReportModal}}" bindtap="onCloseReport"></view>
+  <view class="modal-content" wx:if="{{showReportModal}}">
+    <view class="modal-title">举报商品</view>
+    <view class="modal-body">
+      <view class="report-reason-list">
+        <view
+          class="report-reason {{reportReason === item ? 'active' : ''}}"
+          wx:for="{{reportReasons}}"
+          wx:key="*this"
+          bindtap="onSelectReason"
+          data-reason="{{item}}"
+        >{{item}}</view>
+      </view>
+    </view>
+    <view class="modal-actions">
+      <view class="modal-btn cancel" bindtap="onCloseReport">取消</view>
+      <view class="modal-btn confirm" bindtap="onSubmitReport">提交举报</view>
+    </view>
+  </view>
+
+
+</view>
+
+<!-- 商品不存在 -->
+<view class="empty-state" wx:if="{{!goods}}">
+  <text class="empty-icon">😕</text>
+  <text class="empty-text">商品不存在或已下架</text>
+  <button class="btn-primary btn-sm" style="margin-top:40rpx" bindtap="onGoBack">返回首页</button>
+</view>

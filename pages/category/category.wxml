@@ -1,0 +1,66 @@
+<view class="category-page">
+  <!-- 搜索栏 -->
+  <view class="search-bar">
+    <view class="search-box" bindtap="onSearch">
+      <text class="search-icon">🔍</text>
+      <text class="search-placeholder">搜索商品...</text>
+    </view>
+  </view>
+
+  <view class="category-body">
+    <!-- 左侧分类菜单 -->
+    <scroll-view class="category-menu" scroll-y enhanced show-scrollbar="{{false}}">
+      <view
+        class="menu-item {{activeCategory === item.id ? 'active' : ''}}"
+        wx:for="{{categories}}"
+        wx:key="id"
+        bindtap="onCategoryChange"
+        data-id="{{item.id}}"
+      >
+        <text class="menu-icon">{{item.icon}}</text>
+        <text class="menu-name">{{item.name}}</text>
+        <view class="menu-count">{{item.count || 0}}</view>
+      </view>
+      <view class="menu-item {{activeCategory === 0 ? 'active' : ''}}" bindtap="onCategoryChange" data-id="{{0}}">
+        <text class="menu-icon">📋</text>
+        <text class="menu-name">全部</text>
+      </view>
+    </scroll-view>
+
+    <!-- 右侧商品列表 -->
+    <scroll-view class="goods-panel" scroll-y enhanced show-scrollbar="{{false}}">
+      <!-- 当前分类标题 -->
+      <view class="panel-header">{{currentCategoryName}}</view>
+
+      <view class="goods-list">
+        <view class="goods-card" wx:for="{{filteredGoods}}" wx:key="id" bindtap="onGoodsTap" data-id="{{item.id}}">
+          <image class="goods-img" src="{{item.images[0]}}" mode="aspectFill" />
+          <view class="goods-info">
+            <view class="goods-title">{{item.title}}</view>
+            <view class="goods-desc">{{item.desc}}</view>
+            <view class="goods-price">
+              <text class="price-symbol">¥</text>
+              <text class="price-value">{{item.price}}</text>
+              <text class="price-original" wx:if="{{item.originalPrice}}">¥{{item.originalPrice}}</text>
+            </view>
+            <view class="goods-footer">
+              <view class="seller-info">
+                <image class="seller-avatar" src="{{item.seller.avatar}}" mode="aspectFill" />
+                <text class="seller-name">{{item.seller.name}}</text>
+              </view>
+              <text class="goods-views">{{item.viewCount}}浏览</text>
+            </view>
+          </view>
+        </view>
+      </view>
+
+      <!-- 空状态 -->
+      <view class="empty-state" wx:if="{{filteredGoods.length === 0}}">
+        <text class="empty-icon">📦</text>
+        <text class="empty-text">该分类暂无商品</text>
+      </view>
+
+      <view class="safe-bottom"></view>
+    </scroll-view>
+  </view>
+</view>

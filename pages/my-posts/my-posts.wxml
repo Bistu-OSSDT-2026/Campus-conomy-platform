@@ -1,0 +1,46 @@
+<view class="my-posts-page">
+  <!-- 顶部统计 -->
+  <view class="posts-header">
+    <view class="header-stat">
+      <text class="stat-num">{{goodsList.length}}</text>
+      <text class="stat-label">全部发布</text>
+    </view>
+    <view class="header-stat">
+      <text class="stat-num online">{{onlineCount}}</text>
+      <text class="stat-label">在售中</text>
+    </view>
+    <view class="header-stat">
+      <text class="stat-num sold">0</text>
+      <text class="stat-label">已售出</text>
+    </view>
+  </view>
+
+  <!-- 商品列表 -->
+  <view class="posts-list" wx:if="{{goodsList.length > 0}}">
+    <view class="post-card" wx:for="{{goodsList}}" wx:key="id" bindtap="onGoodsTap" data-id="{{item.id}}">
+      <image class="post-img" src="{{item.images[0]}}" mode="aspectFill" />
+      <view class="post-info">
+        <view class="post-title">{{item.title}}</view>
+        <view class="post-cat">{{item.categoryName}}</view>
+        <view class="post-price">¥{{item.price}}</view>
+        <view class="post-meta">
+          <text class="post-campus">{{item.seller.school}}</text>
+          <text class="post-time">{{item.publishTime}}</text>
+        </view>
+      </view>
+      <view class="post-actions">
+        <view class="post-status {{item.status === 'published' ? 'online' : 'offline'}}">
+          {{item.status === 'published' ? '在售' : '已下架'}}
+        </view>
+        <view class="post-delete" catchtap="onDeletePost" data-id="{{item.id}}">删除</view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 空状态 -->
+  <view class="empty-state" wx:if="{{goodsList.length === 0}}">
+    <text class="empty-icon">📦</text>
+    <text class="empty-text">你还没有发布任何内容</text>
+    <button class="btn-primary btn-sm" style="margin-top:30rpx" bindtap="onGoPublish">去发布</button>
+  </view>
+</view>

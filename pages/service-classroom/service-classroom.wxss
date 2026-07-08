@@ -1,0 +1,29 @@
+.page{background:#F5F7FB;min-height:100vh;padding:20rpx 24rpx}
+.card{background:#FFF;border-radius:24rpx;padding:24rpx;margin-bottom:20rpx}
+.card-title{font-size:28rpx;font-weight:600;color:#1A1A2E;margin-bottom:16rpx}
+.picker-box{background:#F5F7FB;border-radius:16rpx;padding:20rpx 24rpx;font-size:28rpx;color:#333}
+.tag-row{display:flex;gap:16rpx}
+.tag-row.wrap{flex-wrap:wrap}
+.tag-col{display:flex;flex-direction:column;gap:12rpx}
+.tag{padding:14rpx 24rpx;border-radius:12rpx;font-size:26rpx;color:#666;background:#F5F7FB}
+.tag.active{background:#2F6BFF;color:#FFF}
+.btn-primary{width:100%;background:linear-gradient(135deg,#4A6CF7,#2F6BFF);color:#FFF;border-radius:16rpx;font-size:30rpx;font-weight:600;padding:24rpx 0;border:none}
+.btn-primary::after{border:none}
+.room-card{display:flex;justify-content:space-between;align-items:center;padding:20rpx;background:#F9FAFB;border-radius:16rpx;margin-bottom:12rpx}
+.room-card:active{background:#F0F5FF}
+.room-name{font-size:30rpx;font-weight:600;color:#1A1A2E}
+.room-type{font-size:24rpx;color:#999;margin-top:4rpx}
+.room-right{display:flex;align-items:center;gap:12rpx}
+.room-cap{font-size:24rpx;color:#2F6BFF}
+.room-arrow{font-size:36rpx;color:#CCC}
+.empty-text{font-size:26rpx;color:#999;text-align:center;padding:40rpx 0}
+.modal-mask{position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.4);z-index:200}
+.modal-card{position:fixed;bottom:0;left:0;right:0;background:#FFF;border-radius:32rpx 32rpx 0 0;padding:40rpx 32rpx;z-index:201;animation:slideUp 0.3s}
+@keyframes slideUp{from{transform:translateY(100%)}to{transform:translateY(0)}}
+.modal-title{font-size:32rpx;font-weight:700;color:#1A1A2E;margin-bottom:24rpx;text-align:center}
+.detail-row{display:flex;justify-content:space-between;padding:16rpx 0;border-bottom:1rpx solid #F0F0F0}
+.d-label{font-size:26rpx;color:#999}
+.d-value{font-size:26rpx;color:#333;font-weight:500}
+.modal-close{text-align:center;font-size:26rpx;color:#999;margin-top:20rpx}
+.service-note{font-size:22rpx;color:#BBB;text-align:center;margin-top:10rpx}
+.safe-bottom{height:40rpx}

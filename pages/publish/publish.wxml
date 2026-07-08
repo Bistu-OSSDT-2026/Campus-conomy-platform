@@ -1,0 +1,134 @@
+<view class="publish-page">
+  <!-- 未登录提示 -->
+  <view class="login-required" wx:if="{{!isLoggedIn}}">
+    <view class="lr-icon">🔐</view>
+    <view class="lr-title">请先登录</view>
+    <view class="lr-desc">登录后即可发布商品</view>
+    <button class="lr-btn" bindtap="onGoLogin">去登录</button>
+  </view>
+
+  <!-- 未认证提示 -->
+  <view class="login-required" wx:elif="{{!isVerified}}">
+    <view class="lr-icon">🛡️</view>
+    <view class="lr-title">请先完成校园认证</view>
+    <view class="lr-desc">认证后即可发布商品</view>
+    <button class="lr-btn" bindtap="onGoVerify">去认证</button>
+  </view>
+
+  <!-- 发布表单 -->
+  <block wx:else>
+    <!-- 发布类型 -->
+    <view class="publish-types">
+      <view class="type-label">发布类型</view>
+      <view class="type-grid">
+        <view
+          class="type-item {{form.type === item.id ? 'active' : ''}}"
+          wx:for="{{publishTypes}}"
+          wx:key="id"
+          bindtap="onTypeChange"
+          data-type="{{item.id}}"
+        >
+          <text class="type-icon">{{item.icon}}</text>
+          <text class="type-name">{{item.name}}</text>
+        </view>
+      </view>
+    </view>
+
+    <!-- 表单内容 -->
+    <view class="form-section">
+      <!-- 商品图片 -->
+      <view class="form-item">
+        <view class="form-label">商品图片 <text class="required">*</text></view>
+        <view class="image-upload">
+          <view class="image-item" wx:for="{{form.images}}" wx:key="*this" bindtap="onPreviewImage" data-index="{{index}}">
+            <image src="{{item}}" mode="aspectFill" />
+            <view class="image-delete" catchtap="onDeleteImage" data-index="{{index}}">✕</view>
+          </view>
+          <view class="image-add" wx:if="{{form.images.length < 9}}" bindtap="onAddImage">
+            <text class="add-icon">+</text>
+            <text class="add-text">{{form.images.length}}/9</text>
+          </view>
+        </view>
+      </view>
+
+      <!-- 标题 -->
+      <view class="form-item">
+        <view class="form-label">商品标题 <text class="required">*</text></view>
+        <input class="form-input" placeholder="请输入商品标题（2-30字）" maxlength="30" value="{{form.title}}" bindinput="onInput" data-field="title" />
+      </view>
+
+      <!-- 分类 -->
+      <view class="form-item">
+        <view class="form-label">商品分类 <text class="required">*</text></view>
+        <picker mode="selector" range="{{categoryNames}}" bindchange="onCategoryChange">
+          <view class="form-picker {{form.categoryName ? '' : 'placeholder'}}">
+            {{form.categoryName || '请选择分类'}}
+            <text class="picker-arrow">›</text>
+          </view>
+        </picker>
+      </view>
+
+      <!-- 价格 -->
+      <view class="form-item">
+        <view class="form-label">售价 <text class="required">*</text></view>
+        <view class="price-input-wrap">
+          <text class="price-prefix">¥</text>
+          <input class="form-input price-input" type="digit" placeholder="0.00" value="{{form.price}}" bindinput="onInput" data-field="price" />
+        </view>
+      </view>
+
+      <!-- 原价 -->
+      <view class="form-item">
+        <view class="form-label">原价</view>
+        <view class="price-input-wrap">
+          <text class="price-prefix">¥</text>
+          <input class="form-input price-input" type="digit" placeholder="选填" value="{{form.originalPrice}}" bindinput="onInput" data-field="originalPrice" />
+        </view>
+      </view>
+
+      <!-- 成色 -->
+      <view class="form-item">
+        <view class="form-label">成色 <text class="required">*</text></view>
+        <picker mode="selector" range="{{conditionList}}" bindchange="onConditionChange">
+          <view class="form-picker {{form.condition ? '' : 'placeholder'}}">
+            {{form.condition || '请选择成色'}}
+            <text class="picker-arrow">›</text>
+          </view>
+        </picker>
+      </view>
+
+      <!-- 交易地点 -->
+      <view class="form-item">
+        <view class="form-label">交易地点</view>
+        <input class="form-input" placeholder="如：图书馆门口、二食堂" value="{{form.tradePlace}}" bindinput="onInput" data-field="tradePlace" />
+      </view>
+
+      <!-- 商品描述 -->
+      <view class="form-item">
+        <view class="form-label">商品描述 <text class="required">*</text></view>
+        <textarea class="form-textarea" placeholder="详细描述商品信息，新旧程度，交易方式等..." maxlength="500" value="{{form.desc}}" bindinput="onInput" data-field="desc" />
+        <view class="textarea-count">{{form.desc.length || 0}}/500</view>
+      </view>
+
+      <!-- 联系方式 -->
+      <view class="form-item">
+        <view class="form-label">联系方式</view>
+        <input class="form-input" placeholder="QQ/微信（默认使用认证时填写的联系方式）" value="{{form.contact}}" bindinput="onInput" data-field="contact" />
+      </view>
+
+      <!-- 发布按钮 -->
+      <button class="submit-btn" bindtap="onPublish" loading="{{loading}}" disabled="{{loading}}">
+        {{loading ? '发布中...' : '立即发布'}}
+      </button>
+
+      <!-- 发布须知 -->
+      <view class="publish-tips">
+        <view class="tip-title">📋 发布须知</view>
+        <view class="tip-item">• 请如实描述商品信息，虚假信息将被下架</view>
+        <view class="tip-item">• 禁止发布违禁品、假冒伪劣商品</view>
+        <view class="tip-item">• 交易请选择校内公共场所</view>
+        <view class="tip-item">• 发布即表示同意平台相关规则</view>
+      </view>
+    </view>
+  </block>
+</view>

@@ -1,0 +1,23 @@
+<view class="reports-page">
+  <!-- 举报列表 -->
+  <view class="reports-list" wx:if="{{reports.length > 0}}">
+    <view class="report-card" wx:for="{{reports}}" wx:key="id" bindtap="onTapReport" data-report="{{item}}">
+      <view class="report-header">
+        <text class="report-goods-title">{{item.goodsTitle}}</text>
+        <view class="report-status {{item.status}}">{{item.statusText}}</view>
+      </view>
+      <view class="report-reason">举报原因：{{item.reason}}</view>
+      <view class="report-time">举报时间：{{item.time}}</view>
+      <view class="report-result" wx:if="{{item.result}}">
+        <text class="result-label">处理结果：</text>
+        <text class="result-text">{{item.result}}</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 空状态 -->
+  <view class="empty-state" wx:if="{{reports.length === 0}}">
+    <text class="empty-icon">🚨</text>
+    <text class="empty-text">你还没有提交过举报</text>
+  </view>
+</view>

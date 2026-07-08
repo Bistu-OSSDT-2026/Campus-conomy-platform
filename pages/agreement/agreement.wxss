@@ -1,0 +1,72 @@
+.agreement-page {
+  min-height: 100vh;
+  background: #F5F7FB;
+  padding-bottom: 40rpx;
+}
+
+.agreement-header {
+  background: linear-gradient(135deg, #2F6BFF, #4D8BFF);
+  padding: 48rpx 32rpx;
+  text-align: center;
+  color: #FFFFFF;
+}
+.ag-logo {
+  font-size: 56rpx;
+  margin-bottom: 12rpx;
+}
+.ag-title {
+  font-size: 36rpx;
+  font-weight: 700;
+  margin-bottom: 8rpx;
+}
+.ag-subtitle {
+  font-size: 24rpx;
+  opacity: 0.85;
+  margin-bottom: 4rpx;
+}
+.ag-update {
+  font-size: 22rpx;
+  opacity: 0.6;
+}
+
+.ag-section {
+  background: #FFFFFF;
+  margin: 16rpx 24rpx;
+  border-radius: 24rpx;
+  padding: 28rpx;
+  box-shadow: 0 2rpx 12rpx rgba(0,0,0,0.04);
+}
+.ag-section-title {
+  font-size: 30rpx;
+  font-weight: 700;
+  color: #1A1A2E;
+  margin-bottom: 16rpx;
+  padding-bottom: 12rpx;
+  border-bottom: 2rpx solid #F5F7FB;
+}
+.ag-text {
+  font-size: 26rpx;
+  color: #555;
+  line-height: 1.8;
+  margin-bottom: 10rpx;
+}
+.ag-list {
+  padding-left: 8rpx;
+  margin-bottom: 12rpx;
+}
+.ag-item {
+  font-size: 26rpx;
+  color: #555;
+  line-height: 2;
+}
+
+.ag-footer {
+  text-align: center;
+  padding: 40rpx 32rpx;
+  color: #BBB;
+  font-size: 22rpx;
+}
+.ag-footer text {
+  display: block;
+  margin-bottom: 6rpx;
+}

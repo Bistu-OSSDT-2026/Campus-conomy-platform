@@ -1,0 +1,110 @@
+.orders-page {
+  min-height: 100vh;
+  background: #F5F7FB;
+}
+
+.orders-list {
+  padding: 20rpx 24rpx;
+}
+
+.order-card {
+  background: #FFFFFF;
+  border-radius: 20rpx;
+  padding: 20rpx;
+  display: flex;
+  margin-bottom: 16rpx;
+  box-shadow: 0 2rpx 12rpx rgba(0,0,0,0.04);
+  position: relative;
+}
+
+.order-img {
+  width: 160rpx;
+  height: 160rpx;
+  border-radius: 16rpx;
+  flex-shrink: 0;
+  margin-right: 20rpx;
+}
+
+.order-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.order-title {
+  font-size: 28rpx;
+  font-weight: 600;
+  color: #1A1A2E;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  line-height: 1.4;
+}
+
+.order-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.order-price {
+  font-size: 32rpx;
+  font-weight: 700;
+  color: #FF4D4F;
+}
+
+.order-status {
+  font-size: 22rpx;
+  padding: 4rpx 14rpx;
+  border-radius: 8rpx;
+  flex-shrink: 0;
+}
+
+.order-status.pending {
+  background: #FFFBE6;
+  color: #D48806;
+}
+
+.order-status.confirmed {
+  background: #E8F0FF;
+  color: #2F6BFF;
+}
+
+.order-status.completed {
+  background: #F6FFED;
+  color: #52C41A;
+}
+
+.order-status.cancelled {
+  background: #F5F7FB;
+  color: #999;
+}
+
+.order-seller {
+  font-size: 24rpx;
+  color: #666;
+}
+
+.order-location {
+  font-size: 24rpx;
+  color: #999;
+}
+
+.order-time {
+  font-size: 22rpx;
+  color: #BBB;
+}
+
+.cancel-btn {
+  position: absolute;
+  right: 20rpx;
+  bottom: 20rpx;
+  font-size: 24rpx;
+  color: #FF4D4F;
+  padding: 8rpx 20rpx;
+  background: #FFF1F0;
+  border-radius: 48rpx;
+}

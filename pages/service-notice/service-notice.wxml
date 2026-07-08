@@ -1,0 +1,42 @@
+<view class="page">
+  <!-- 分类标签 -->
+  <scroll-view class="cat-scroll" scroll-x>
+    <view class="cat-tag {{selectedCategory === item.id ? 'active' : ''}}"
+      wx:for="{{categories}}" wx:key="id"
+      bindtap="onCategoryTap" data-id="{{item.id}}">{{item.name}}</view>
+  </scroll-view>
+
+  <!-- 通知列表 -->
+  <view class="card" wx:for="{{filteredNotices}}" wx:key="id" bindtap="onNoticeTap" data-id="{{item.id}}">
+    <view class="notice-header">
+      <view class="notice-line">
+        <text class="notice-title">{{item.title}}</text>
+        <text class="notice-important" wx:if="{{item.important}}">重要</text>
+      </view>
+      <view class="notice-meta">
+        <text class="notice-cat">{{categories[0] && ''}}</text>
+        <text class="notice-time">{{item.time}}</text>
+      </view>
+    </view>
+    <view class="notice-summary">{{item.summary}}</view>
+  </view>
+
+  <view wx:if="{{filteredNotices.length === 0}}" class="empty-msg">
+    <text class="empty-text">暂无该类通知</text>
+  </view>
+
+  <!-- 详情弹窗 -->
+  <view class="modal-mask" wx:if="{{showDetail}}" bindtap="onCloseDetail"></view>
+  <view class="modal-card" wx:if="{{showDetail}}">
+    <view class="modal-header">
+      <view class="modal-cat-tag" wx:if="{{detailNotice.important}}">🔴 重要</view>
+      <view class="modal-time">{{detailNotice.time}}</view>
+    </view>
+    <view class="modal-title">{{detailNotice.title}}</view>
+    <view class="modal-body">{{detailNotice.content}}</view>
+    <view class="modal-close" bindtap="onCloseDetail">关闭</view>
+  </view>
+
+  <view class="service-note">本页面为课程展示模拟数据，正式上线需接入学校官方通知源</view>
+  <view class="safe-bottom"></view>
+</view>

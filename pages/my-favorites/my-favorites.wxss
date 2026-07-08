@@ -1,0 +1,88 @@
+.favorites-page {
+  min-height: 100vh;
+  background: #F5F7FB;
+}
+
+.goods-list {
+  padding: 20rpx 24rpx;
+}
+.goods-card {
+  background: #FFFFFF;
+  border-radius: 20rpx;
+  padding: 20rpx;
+  display: flex;
+  margin-bottom: 16rpx;
+  box-shadow: 0 2rpx 12rpx rgba(0,0,0,0.04);
+}
+.goods-img {
+  width: 160rpx;
+  height: 160rpx;
+  border-radius: 16rpx;
+  flex-shrink: 0;
+  margin-right: 20rpx;
+}
+.goods-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.goods-title {
+  font-size: 28rpx;
+  font-weight: 600;
+  color: #1A1A2E;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  line-height: 1.4;
+}
+.goods-cat {
+  font-size: 22rpx;
+  color: #2F6BFF;
+  background: #EEF3FF;
+  padding: 2rpx 12rpx;
+  border-radius: 6rpx;
+  align-self: flex-start;
+}
+.goods-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.price-symbol {
+  font-size: 22rpx;
+  color: #FF4D4F;
+  font-weight: 600;
+}
+.price-value {
+  font-size: 32rpx;
+  color: #FF4D4F;
+  font-weight: 700;
+}
+.unfavorite-btn {
+  font-size: 24rpx;
+  color: #FF4D4F;
+  padding: 8rpx 20rpx;
+  background: #FFF1F0;
+  border-radius: 48rpx;
+}
+.seller-row {
+  display: flex;
+  align-items: center;
+  font-size: 22rpx;
+}
+.seller-avatar {
+  width: 32rpx;
+  height: 32rpx;
+  border-radius: 50%;
+  margin-right: 8rpx;
+}
+.seller-name {
+  color: #999;
+  flex: 1;
+}
+.goods-time {
+  color: #CCC;
+}

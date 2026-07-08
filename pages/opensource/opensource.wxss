@@ -1,0 +1,168 @@
+.opensource-page {
+  min-height: 100vh;
+  background: #F5F7FB;
+}
+
+.os-header {
+  background: linear-gradient(135deg, #1A1A2E, #2F6BFF);
+  padding: 56rpx 40rpx;
+  text-align: center;
+  color: #FFFFFF;
+}
+.os-logo {
+  font-size: 64rpx;
+  margin-bottom: 16rpx;
+}
+.os-title {
+  font-size: 36rpx;
+  font-weight: 700;
+  margin-bottom: 8rpx;
+}
+.os-version {
+  font-size: 24rpx;
+  opacity: 0.7;
+}
+
+.os-section {
+  background: #FFFFFF;
+  margin: 20rpx 24rpx;
+  border-radius: 24rpx;
+  padding: 32rpx;
+  box-shadow: 0 2rpx 12rpx rgba(0,0,0,0.04);
+}
+.os-section-title {
+  font-size: 30rpx;
+  font-weight: 700;
+  color: #1A1A2E;
+  margin-bottom: 20rpx;
+}
+.os-text {
+  font-size: 28rpx;
+  color: #666;
+  line-height: 1.8;
+  margin-bottom: 16rpx;
+}
+.os-list {
+  margin-left: 0;
+}
+.os-item {
+  font-size: 26rpx;
+  color: #666;
+  line-height: 2.2;
+}
+
+.os-card {
+  background: #F5F7FB;
+  border-radius: 16rpx;
+  padding: 24rpx;
+  margin-bottom: 16rpx;
+}
+.os-card.warn {
+  background: #FFFBE6;
+  border-left: 6rpx solid #FAAD14;
+}
+.os-card-title {
+  font-size: 28rpx;
+  font-weight: 600;
+  color: #1A1A2E;
+  margin-bottom: 12rpx;
+}
+.os-card-text {
+  font-size: 26rpx;
+  color: #666;
+  line-height: 1.8;
+}
+
+/* 价格表 */
+.os-price-table {
+  border-radius: 16rpx;
+  overflow: hidden;
+  border: 1rpx solid #E8ECF1;
+}
+.price-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 20rpx 24rpx;
+  background: #FAFBFC;
+  border-bottom: 1rpx solid #E8ECF1;
+}
+.price-row:last-child {
+  border-bottom: none;
+}
+.price-row:nth-child(even) {
+  background: #FFFFFF;
+}
+.price-label {
+  font-size: 26rpx;
+  color: #666;
+}
+.price-value {
+  font-size: 26rpx;
+  color: #2F6BFF;
+  font-weight: 600;
+}
+
+/* 贡献步骤 */
+.os-steps {
+  display: flex;
+  justify-content: space-between;
+}
+.step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.step-num {
+  width: 56rpx;
+  height: 56rpx;
+  background: #2F6BFF;
+  color: #FFFFFF;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28rpx;
+  font-weight: 700;
+  margin-bottom: 8rpx;
+}
+.step-text {
+  font-size: 22rpx;
+  color: #999;
+  text-align: center;
+}
+
+/* 仓库信息 */
+.os-repo-info {
+  background: #F5F7FB;
+  border-radius: 16rpx;
+  padding: 20rpx 24rpx;
+}
+.repo-item {
+  display: flex;
+  padding: 16rpx 0;
+  border-bottom: 1rpx solid #E8ECF1;
+}
+.repo-item:last-child {
+  border-bottom: none;
+}
+.repo-label {
+  width: 140rpx;
+  font-size: 26rpx;
+  color: #999;
+}
+.repo-value {
+  font-size: 26rpx;
+  color: #333;
+  font-weight: 500;
+}
+
+.os-footer {
+  text-align: center;
+  padding: 40rpx;
+  color: #CCC;
+  font-size: 24rpx;
+}
+.os-footer text {
+  display: block;
+  margin-bottom: 8rpx;
+}

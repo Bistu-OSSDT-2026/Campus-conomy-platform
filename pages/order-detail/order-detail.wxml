@@ -1,0 +1,69 @@
+<view class="detail-page" wx:if="{{order}}">
+  <!-- 订单状态横幅 -->
+  <view class="status-banner {{order.status}}">
+    <text class="status-icon">
+      <block wx:if="{{order.status === 'pending'}}">⏳</block>
+      <block wx:elif="{{order.status === 'confirmed'}}">✅</block>
+      <block wx:elif="{{order.status === 'completed'}}">🎉</block>
+      <block wx:elif="{{order.status === 'cancelled'}}">❌</block>
+    </text>
+    <text class="status-text">{{order.statusText}}</text>
+  </view>
+
+  <!-- 商品信息 -->
+  <view class="section-card">
+    <view class="section-title">商品信息</view>
+    <view class="goods-row">
+      <image class="goods-img" src="{{order.productImage}}" mode="aspectFill" />
+      <view class="goods-detail">
+        <view class="goods-title">{{order.productTitle}}</view>
+        <view class="goods-cat" wx:if="{{order.categoryName}}">{{order.categoryName}}</view>
+        <view class="goods-price">¥{{order.price}}</view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 买卖家信息 -->
+  <view class="section-card">
+    <view class="section-title">交易信息</view>
+    <view class="info-row">
+      <text class="info-label">订单编号</text>
+      <text class="info-value mono">{{order.orderId}}</text>
+    </view>
+    <view class="info-row">
+      <text class="info-label">卖家</text>
+      <text class="info-value">{{order.sellerName}}</text>
+    </view>
+    <view class="info-row" wx:if="{{order.sellerContact}}">
+      <text class="info-label">卖家联系方式</text>
+      <text class="info-value">{{order.sellerContact}}</text>
+    </view>
+    <view class="info-row">
+      <text class="info-label">买家</text>
+      <text class="info-value">{{order.buyerName}}</text>
+    </view>
+    <view class="info-row" wx:if="{{order.buyerContact}}">
+      <text class="info-label">买家联系方式</text>
+      <text class="info-value">{{order.buyerContact}}</text>
+    </view>
+    <view class="info-row" wx:if="{{order.tradeLocation}}">
+      <text class="info-label">交易地点</text>
+      <text class="info-value">{{order.tradeLocation}}</text>
+    </view>
+    <view class="info-row" wx:if="{{order.remark}}">
+      <text class="info-label">备注</text>
+      <text class="info-value">{{order.remark}}</text>
+    </view>
+    <view class="info-row">
+      <text class="info-label">下单时间</text>
+      <text class="info-value">{{order.createTime}}</text>
+    </view>
+  </view>
+
+  <!-- 取消订单按钮：仅待确认状态 -->
+  <view class="action-section" wx:if="{{order.status === 'pending'}}">
+    <button class="btn-danger" bindtap="onCancelOrder">取消订单</button>
+  </view>
+
+  <view class="safe-bottom"></view>
+</view>

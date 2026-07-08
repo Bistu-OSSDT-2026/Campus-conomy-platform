@@ -1,0 +1,118 @@
+.my-posts-page {
+  min-height: 100vh;
+  background: #F5F7FB;
+}
+
+/* 顶部统计 */
+.posts-header {
+  background: #FFFFFF;
+  display: flex;
+  padding: 28rpx 0;
+  margin-bottom: 16rpx;
+}
+.header-stat {
+  flex: 1;
+  text-align: center;
+  border-right: 1rpx solid #F5F7FB;
+}
+.header-stat:last-child {
+  border-right: none;
+}
+.stat-num {
+  font-size: 40rpx;
+  font-weight: 700;
+  color: #1A1A2E;
+  display: block;
+  margin-bottom: 4rpx;
+}
+.stat-num.online { color: #52C41A; }
+.stat-num.sold { color: #999; }
+.stat-label {
+  font-size: 24rpx;
+  color: #999;
+}
+
+/* 商品列表 */
+.posts-list {
+  padding: 0 24rpx;
+}
+.post-card {
+  background: #FFFFFF;
+  border-radius: 20rpx;
+  padding: 20rpx;
+  display: flex;
+  margin-bottom: 16rpx;
+  box-shadow: 0 2rpx 12rpx rgba(0,0,0,0.04);
+}
+.post-img {
+  width: 160rpx;
+  height: 160rpx;
+  border-radius: 16rpx;
+  flex-shrink: 0;
+  margin-right: 20rpx;
+}
+.post-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.post-title {
+  font-size: 28rpx;
+  font-weight: 600;
+  color: #1A1A2E;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  line-height: 1.4;
+}
+.post-cat {
+  font-size: 22rpx;
+  color: #2F6BFF;
+  background: #EEF3FF;
+  padding: 2rpx 12rpx;
+  border-radius: 6rpx;
+  align-self: flex-start;
+}
+.post-price {
+  font-size: 32rpx;
+  font-weight: 700;
+  color: #FF4D4F;
+}
+.post-meta {
+  display: flex;
+  justify-content: space-between;
+  font-size: 22rpx;
+  color: #BBB;
+}
+.post-campus {
+  color: #999;
+}
+.post-actions {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-end;
+  margin-left: 16rpx;
+}
+.post-status {
+  font-size: 22rpx;
+  padding: 6rpx 16rpx;
+  border-radius: 8rpx;
+  margin-bottom: 12rpx;
+}
+.post-status.online {
+  background: #F6FFED;
+  color: #52C41A;
+}
+.post-status.offline {
+  background: #F5F5F5;
+  color: #999;
+}
+.post-delete {
+  font-size: 22rpx;
+  color: #FF4D4F;
+  padding: 6rpx 16rpx;
+}

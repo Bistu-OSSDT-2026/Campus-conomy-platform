@@ -1,0 +1,135 @@
+<view class="home-page">
+  <!-- 顶部搜索栏 -->
+  <view class="search-bar">
+    <view class="search-box" bindtap="onSearchTap">
+      <text class="search-icon">🔍</text>
+      <text class="search-placeholder">搜索校园好物...</text>
+    </view>
+  </view>
+
+  <!-- 毕业季横幅 -->
+  <view class="banner-section">
+    <view class="banner-card" bindtap="onBannerTap">
+      <view class="banner-content">
+        <view class="banner-tag">🔥 毕业季</view>
+        <view class="banner-title">学长学姐清仓特卖</view>
+        <view class="banner-desc">教材/电器/生活用品 超低价</view>
+      </view>
+      <view class="banner-img">🎓</view>
+    </view>
+  </view>
+
+  <!--
+    滑动广告位
+    用于 CampusMarket 商业化展示：校园商家推广、平台活动宣传、校内服务推荐
+  -->
+  <view class="ad-section">
+    <swiper
+      class="ad-swiper"
+      indicator-dots="{{true}}"
+      indicator-color="rgba(0,0,0,0.15)"
+      indicator-active-color="rgba(0,0,0,0.45)"
+      autoplay="{{true}}"
+      interval="{{3500}}"
+      duration="{{500}}"
+      circular="{{true}}"
+    >
+      <swiper-item wx:for="{{ads}}" wx:key="id">
+        <view class="ad-card ad-{{item.bgColor}}" bindtap="onAdTap" data-ad="{{item}}">
+          <view class="ad-left">
+            <view class="ad-tag">{{item.tag}}</view>
+            <view class="ad-title">{{item.title}}</view>
+            <view class="ad-subtitle">{{item.subtitle}}</view>
+            <view class="ad-btn">{{item.buttonText}}</view>
+          </view>
+          <view class="ad-icon">{{item.icon}}</view>
+        </view>
+      </swiper-item>
+    </swiper>
+  </view>
+
+  <!-- 校园服务精选入口 -->
+  <view class="service-section">
+    <view class="section-header">
+      <text class="section-title">🏫 校园服务</text>
+      <text class="section-more" bindtap="onMoreService">更多 ›</text>
+    </view>
+    <view class="service-grid">
+      <view class="service-item" wx:for="{{featuredServices}}" wx:key="id" bindtap="onServiceTap" data-item="{{item}}">
+        <view class="service-icon-wrap">
+          <text class="service-icon">{{item.icon}}</text>
+        </view>
+        <text class="service-name">{{item.name}}</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 校园公告 -->
+  <view class="notice-section">
+    <view class="section-header">
+      <text class="section-title">📢 校园公告</text>
+      <text class="section-more" bindtap="onMoreNotice">更多 ›</text>
+    </view>
+    <view class="notice-list">
+      <view class="notice-item" wx:for="{{announcements}}" wx:key="id" bindtap="onNoticeTap" data-id="{{item.id}}">
+        <view class="notice-dot {{item.type}}"></view>
+        <text class="notice-text">{{item.title}}</text>
+        <text class="notice-date">{{item.date}}</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 商品列表 -->
+  <view class="goods-section">
+    <view class="section-header">
+      <text class="section-title">🛒 最新发布</text>
+      <text class="section-more" bindtap="onMoreGoods">更多 ›</text>
+    </view>
+
+    <view class="goods-list">
+      <view class="goods-card" wx:for="{{goodsList}}" wx:key="id" bindtap="onGoodsTap" data-id="{{item.id}}">
+        <!-- 商品图片 -->
+        <view class="goods-img-wrap">
+          <image class="goods-img" src="{{item.images[0]}}" mode="aspectFill" />
+          <view class="goods-tag">{{item.categoryName}}</view>
+        </view>
+        <!-- 商品信息 -->
+        <view class="goods-info">
+          <view class="goods-title">{{item.title}}</view>
+          <view class="goods-desc">{{item.desc}}</view>
+          <view class="goods-bottom">
+            <view class="goods-price">
+              <text class="price-symbol">¥</text>
+              <text class="price-value">{{item.price}}</text>
+              <text class="price-original" wx:if="{{item.originalPrice}}">¥{{item.originalPrice}}</text>
+            </view>
+            <view class="goods-meta">
+              <text class="meta-item">{{item.viewCount}}次浏览</text>
+            </view>
+          </view>
+          <!-- 卖家信息 -->
+          <view class="seller-row">
+            <image class="seller-avatar" src="{{item.seller.avatar}}" mode="aspectFill" />
+            <text class="seller-name">{{item.seller.name}}</text>
+            <text class="seller-verified" wx:if="{{item.seller.verified}}">✓已认证</text>
+            <text class="goods-time">{{item.publishTime}}</text>
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <!-- 加载更多 -->
+    <view class="load-more" wx:if="{{goodsList.length >= 8}}">
+      — 已加载全部商品 —
+    </view>
+
+    <!-- 空状态 -->
+    <view class="empty-state" wx:if="{{goodsList.length === 0}}">
+      <text class="empty-icon">📦</text>
+      <text class="empty-text">暂无商品，快去发布吧~</text>
+    </view>
+  </view>
+
+  <!-- 安全底部 -->
+  <view class="safe-bottom"></view>
+</view>

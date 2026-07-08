@@ -1,0 +1,79 @@
+<view class="page">
+  <!-- 日期选择 -->
+  <view class="card">
+    <view class="card-title">预约日期</view>
+    <picker mode="date" value="{{selectedDate}}" bindchange="onDateChange">
+      <view class="picker-box">{{selectedDate}}</view>
+    </picker>
+  </view>
+
+  <!-- 场馆选择 -->
+  <view class="card">
+    <view class="card-title">选择场馆</view>
+    <view class="tag-row">
+      <view class="tag {{selectedCampus === item.id ? 'active' : ''}}"
+        wx:for="{{campuses}}" wx:key="id"
+        bindtap="onCampusChange" data-id="{{item.id}}">{{item.name}}</view>
+    </view>
+  </view>
+
+  <!-- 楼层选择 -->
+  <view class="card">
+    <view class="card-title">选择楼层</view>
+    <view class="tag-row wrap">
+      <view class="tag {{selectedFloor === item.id ? 'active' : ''}}"
+        wx:for="{{floors}}" wx:key="id"
+        bindtap="onFloorChange" data-id="{{item.id}}">{{item.name}}</view>
+    </view>
+  </view>
+
+  <!-- 时间段 -->
+  <view class="card">
+    <view class="card-title">选择时间段</view>
+    <view class="tag-row wrap">
+      <view class="tag {{selectedSlot === item.id ? 'active' : ''}}"
+        wx:for="{{timeSlots}}" wx:key="id"
+        bindtap="onSlotChange" data-id="{{item.id}}">{{item.label}}</view>
+    </view>
+  </view>
+
+  <!-- 座位选择 -->
+  <view class="card">
+    <view class="card-title">选择座位（绿色=可预约，红色=已预约，灰色=维修）</view>
+    <view class="seat-grid">
+      <view class="seat {{item.status}} {{selectedSeat === item.id ? 'selected' : ''}}"
+        wx:for="{{seats}}" wx:key="id"
+        bindtap="onSeatTap" data-id="{{item.id}}">
+        {{item.label}}
+      </view>
+    </view>
+    <view class="seat-legend">
+      <text class="legend-dot available"></text><text>可预约</text>
+      <text class="legend-dot booked"></text><text>已预约</text>
+      <text class="legend-dot maintenance"></text><text>维修</text>
+    </view>
+  </view>
+
+  <!-- 确认按钮 -->
+  <view class="card" wx:if="{{!showResult}}">
+    <button class="btn-primary" bindtap="onConfirm">确认预约</button>
+  </view>
+
+  <!-- 预约结果 -->
+  <view class="card result-card" wx:if="{{showResult}}">
+    <view class="result-icon">✅</view>
+    <view class="result-title">预约成功</view>
+    <view class="result-tip">请按时到馆签到</view>
+    <view class="result-info">
+      <view class="info-row"><text class="label">预约码</text><text class="value">{{reservationInfo.code}}</text></view>
+      <view class="info-row"><text class="label">场馆</text><text class="value">{{reservationInfo.campus}}</text></view>
+      <view class="info-row"><text class="label">楼层</text><text class="value">{{reservationInfo.floor}}</text></view>
+      <view class="info-row"><text class="label">座位</text><text class="value">{{reservationInfo.seat}}</text></view>
+      <view class="info-row"><text class="label">日期</text><text class="value">{{reservationInfo.date}}</text></view>
+      <view class="info-row"><text class="label">时间</text><text class="value">{{reservationInfo.time}}</text></view>
+    </view>
+    <view class="service-note">当前为课程展示模拟数据</view>
+  </view>
+
+  <view class="safe-bottom"></view>
+</view>

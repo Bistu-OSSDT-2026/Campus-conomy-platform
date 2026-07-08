@@ -1,0 +1,52 @@
+<view class="page">
+  <!-- 分类标签 -->
+  <scroll-view class="cat-scroll" scroll-x>
+    <view class="cat-tag {{selectedCategory === item.id ? 'active' : ''}}"
+      wx:for="{{categories}}" wx:key="id"
+      bindtap="onCategoryTap" data-id="{{item.id}}">{{item.name}}</view>
+  </scroll-view>
+
+  <!-- 活动列表 -->
+  <view class="card" wx:for="{{filteredActivities}}" wx:key="id" bindtap="onActivityTap" data-id="{{item.id}}">
+    <view class="act-top">
+      <view class="act-name">{{item.name}}</view>
+      <view class="act-cat">{{item.organizer}}</view>
+    </view>
+    <view class="act-info">
+      <text>📍 {{item.place}}</text>
+      <text>⏰ 截止 {{item.deadline}}</text>
+      <text>👥 {{item.participants}}人参与</text>
+    </view>
+    <view class="act-desc">{{item.desc}}</view>
+    <view class="act-bottom">
+      <view class="act-deadline">报名截止：{{item.deadline}}</view>
+      <view class="enroll-btn {{enrolledIds.indexOf(item.id) > -1 ? 'done' : ''}}"
+        catchtap="onEnroll" data-id="{{item.id}}">
+        {{enrolledIds.indexOf(item.id) > -1 ? '已报名' : '立即报名'}}
+      </view>
+    </view>
+  </view>
+
+  <view wx:if="{{filteredActivities.length === 0}}" class="empty-msg">
+    <text class="empty-text">暂无该类活动</text>
+  </view>
+
+  <!-- 详情弹窗 -->
+  <view class="modal-mask" wx:if="{{showDetail}}" bindtap="onCloseDetail"></view>
+  <view class="modal-card" wx:if="{{showDetail}}">
+    <view class="modal-title">{{detailActivity.name}}</view>
+    <view class="d-row"><text class="d-label">主办单位</text><text class="d-value">{{detailActivity.organizer}}</text></view>
+    <view class="d-row"><text class="d-label">举办地点</text><text class="d-value">{{detailActivity.place}}</text></view>
+    <view class="d-row"><text class="d-label">报名截止</text><text class="d-value">{{detailActivity.deadline}}</text></view>
+    <view class="d-row"><text class="d-label">参与人数</text><text class="d-value">{{detailActivity.participants}}人</text></view>
+    <view class="d-row"><text class="d-label">活动简介</text><text class="d-value">{{detailActivity.desc}}</text></view>
+    <view class="enroll-btn big {{enrolledIds.indexOf(detailActivity.id) > -1 ? 'done' : ''}}" style="margin-top:24rpx"
+      catchtap="onEnroll" data-id="{{detailActivity.id}}">
+      {{enrolledIds.indexOf(detailActivity.id) > -1 ? '已报名' : '立即报名'}}
+    </view>
+    <view class="modal-close" bindtap="onCloseDetail">关闭</view>
+  </view>
+
+  <view class="service-note">当前为课程展示模拟数据</view>
+  <view class="safe-bottom"></view>
+</view>

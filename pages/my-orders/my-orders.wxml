@@ -1,0 +1,29 @@
+<view class="orders-page">
+  <!-- 订单列表 -->
+  <view class="orders-list" wx:if="{{orders.length > 0}}">
+    <view class="order-card" wx:for="{{orders}}" wx:key="orderId" bindtap="onOrderTap" data-id="{{item.orderId}}">
+      <image class="order-img" src="{{item.productImage}}" mode="aspectFill" />
+      <view class="order-info">
+        <view class="order-title">{{item.productTitle}}</view>
+        <view class="order-meta">
+          <text class="order-price">¥{{item.price}}</text>
+          <view class="order-status {{item.status}}">{{item.statusText}}</view>
+        </view>
+        <view class="order-seller">卖家：{{item.sellerName}}</view>
+        <view class="order-location" wx:if="{{item.tradeLocation}}">交易地点：{{item.tradeLocation}}</view>
+        <view class="order-time">{{item.createTime}}</view>
+      </view>
+      <!-- 取消按钮：仅待确认状态显示 -->
+      <view class="cancel-btn" wx:if="{{item.status === 'pending'}}" catchtap="onCancelOrder" data-id="{{item.orderId}}">取消订单</view>
+    </view>
+  </view>
+
+  <!-- 空状态 -->
+  <view class="empty-state" wx:if="{{orders.length === 0}}">
+    <text class="empty-icon">📋</text>
+    <text class="empty-text">你还没有购买过商品</text>
+    <button class="btn-primary btn-sm" style="margin-top:30rpx" bindtap="onGoHome">去逛逛</button>
+  </view>
+
+  <view class="safe-bottom"></view>
+</view>
