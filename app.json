@@ -1,0 +1,70 @@
+{
+  "pages": [
+    "pages/login/login",
+    "pages/verify/verify",
+    "pages/home/home",
+    "pages/category/category",
+    "pages/publish/publish",
+    "pages/detail/detail",
+    "pages/mine/mine",
+    "pages/my-posts/my-posts",
+    "pages/my-favorites/my-favorites",
+    "pages/my-reports/my-reports",
+    "pages/my-orders/my-orders",
+    "pages/order-detail/order-detail",
+    "pages/settings/settings",
+    "pages/agreement/agreement",
+    "pages/admin/admin",
+    "pages/opensource/opensource",
+    "pages/campus-services/campus-services",
+    "pages/service-library/service-library",
+    "pages/service-classroom/service-classroom",
+    "pages/service-schedule/service-schedule",
+    "pages/service-notice/service-notice",
+    "pages/service-activity/service-activity",
+    "pages/service-card/service-card",
+    "pages/service-express/service-express",
+    "pages/service-repair/service-repair"
+  ],
+  "window": {
+    "backgroundTextStyle": "dark",
+    "navigationBarBackgroundColor": "#2F6BFF",
+    "navigationBarTitleText": "校园经济",
+    "navigationBarTextStyle": "white",
+    "backgroundColor": "#F5F7FB"
+  },
+  "tabBar": {
+    "color": "#999999",
+    "selectedColor": "#2F6BFF",
+    "backgroundColor": "#FFFFFF",
+    "borderStyle": "white",
+    "list": [
+      {
+        "pagePath": "pages/home/home",
+        "text": "首页",
+        "iconPath": "images/tab-home.png",
+        "selectedIconPath": "images/tab-home-active.png"
+      },
+      {
+        "pagePath": "pages/category/category",
+        "text": "分类",
+        "iconPath": "images/tab-category.png",
+        "selectedIconPath": "images/tab-category-active.png"
+      },
+      {
+        "pagePath": "pages/publish/publish",
+        "text": "发布",
+        "iconPath": "images/tab-publish.png",
+        "selectedIconPath": "images/tab-publish-active.png"
+      },
+      {
+        "pagePath": "pages/mine/mine",
+        "text": "我的",
+        "iconPath": "images/tab-mine.png",
+        "selectedIconPath": "images/tab-mine-active.png"
+      }
+    ]
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json"
+}
