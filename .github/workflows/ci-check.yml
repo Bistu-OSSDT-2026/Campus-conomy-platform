@@ -17,8 +17,10 @@ jobs:
       - name: 配置Node.js 18
         uses: actions/setup-node@v4
         with:
-          node-version: 18
-          cache: npm
+         node-version: 18
+         cache: 'npm'
+         cache-dependency-path: server/package-lock.json
+
 
       # 安装后端依赖
       - name: 安装项目依赖包
