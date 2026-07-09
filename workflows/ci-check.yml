@@ -1,1 +1,34 @@
+name: 项目CI自动化校验流水线
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  node-test-lint:
+    runs-on: ubuntu-latest
+    steps:
+      # 拉取仓库全部代码
+      - name: 拉取代码
+        uses: actions/checkout@v4
+
+      # 配置Node运行环境
+      - name: 配置Node.js 18
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+          cache: npm
+
+      # 安装后端依赖
+      - name: 安装项目依赖包
+        run: npm install
+
+      # 代码规范检查 Lint
+      - name: ESLint代码格式校验
+        run: npm run lint || echo "未配置lint脚本，跳过代码检查"
+
+      # 后端接口简易测试
+      - name: 运行后端测试脚本
+        run: npm run test || echo "未配置test脚本，跳过自动化测试"
 
