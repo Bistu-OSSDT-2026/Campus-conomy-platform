@@ -6,6 +6,8 @@
   "scripts": {
     "start": "node app.js",
     "dev": "node app.js"
+    "lint": "eslint server/ pages/",
+    "test": "node server/test.js"
   },
   "dependencies": {
     "express": "^4.18.2",
