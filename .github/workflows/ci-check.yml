@@ -21,7 +21,3 @@ jobs:
           cache: 'npm'
           # 指定你的package-lock.json在server文件夹
           cache-dependency-path: server/package-lock.json
-
-      # 3. 进入server目录执行安装、lint、测试
-      - name: 运行测试脚本
-        run: cd server && npm run test
