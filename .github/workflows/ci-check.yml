@@ -6,20 +6,28 @@ on:
     branches: [ main ]
 
 jobs:
-  node-test-lint:
+  build:
     runs-on: ubuntu-latest
     steps:
-      # 拉取仓库全部代码
       - name: 拉取代码
         uses: actions/checkout@v4
 
-      # 配置Node运行环境
       - name: 配置Node.js 18
         uses: actions/setup-node@v4
         with:
-         node-version: 18
-         cache: 'npm'
-         cache-dependency-path: server/package-lock.json
+          node-version: 18
+          cache: 'npm'
+          cache-dependency-path: server/package-lock.json
+
+      - name: 安装后端依赖
+        run: cd server && npm install
+
+      - name: ESLint代码格式校验
+        run: cd server && npm run lint
+
+      - name: 运行后端测试脚本
+        run: cd server && npm run test
+
 
 
       # 安装后端依赖
