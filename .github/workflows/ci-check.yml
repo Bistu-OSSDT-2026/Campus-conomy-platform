@@ -1,0 +1,41 @@
+name: 代码检查CI
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  lint-test:
+    runs-on: ubuntu-latest
+    steps:
+      # 1. 拉取仓库代码（基础步骤，自带，不用在列表选）
+      - name: 拉取代码
+        uses: actions/checkout@v4
+
+      # 2. Setup Node.js environment 配置Node环境
+      - name: 配置Node.js 18
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+          cache: 'npm'
+          # 指定你的package-lock.json在server文件夹
+          cache-dependency-path: server/package-lock.json
+
+      # 3. Cache by actions 手动缓存（上面setup-node自带缓存，也可以单独写这个）
+      # 如果你想单独配置缓存，加下面这段，二选一即可
+      # - name: 缓存npm依赖
+      #   uses: actions/cache@v3
+      #   with:
+      #     path: server/node_modules
+      #     key: ${{ runner.os }}-node-${{ hashFiles('server/package-lock.json') }}
+
+      # 4. 进入server目录执行安装、lint、测试
+      - name: 安装后端依赖
+        run: cd server && npm install
+
+      - name: ESLint代码规范校验
+        run: cd server && npm run lint
+
+      - name: 运行测试脚本
+        run: cd server && npm run test
