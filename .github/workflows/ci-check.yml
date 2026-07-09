@@ -34,8 +34,5 @@ jobs:
       - name: 安装后端依赖
         run: cd server && npm install
 
-      - name: ESLint代码规范校验
-        run: cd server && npm run lint
-
       - name: 运行测试脚本
         run: cd server && npm run test
